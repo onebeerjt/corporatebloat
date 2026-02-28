@@ -230,6 +230,8 @@ export default function BloatIndex() {
       const margin = { top: 24, right: 24, bottom: 24, left: 24 };
       const innerWidth = width - margin.left - margin.right;
       const innerHeight = height - margin.top - margin.bottom;
+      const canvasWidth = Math.max(innerWidth * 1.8, innerWidth + 360);
+      const canvasHeight = Math.max(innerHeight * 1.8, innerHeight + 320);
 
       const employeeExtent = d3.extent(filteredCompanies, (d) => d.employees);
       const radiusScale = d3
@@ -239,15 +241,15 @@ export default function BloatIndex() {
 
       const nodes: CompanyNode[] = filteredCompanies.map((company) => ({
         ...company,
-        x: innerWidth / 2 + (Math.random() - 0.5) * 40,
-        y: innerHeight / 2 + (Math.random() - 0.5) * 40
+        x: canvasWidth / 2 + (Math.random() - 0.5) * 40,
+        y: canvasHeight / 2 + (Math.random() - 0.5) * 40
       }));
 
       const simulation = d3
         .forceSimulation(nodes)
-        .force("center", d3.forceCenter(innerWidth / 2, innerHeight / 2))
-        .force("x", d3.forceX(innerWidth / 2).strength(0.03))
-        .force("y", d3.forceY(innerHeight / 2).strength(0.03))
+        .force("center", d3.forceCenter(canvasWidth / 2, canvasHeight / 2))
+        .force("x", d3.forceX(canvasWidth / 2).strength(0.03))
+        .force("y", d3.forceY(canvasHeight / 2).strength(0.03))
         .force(
           "collision",
           d3
@@ -262,8 +264,9 @@ export default function BloatIndex() {
       }
 
       const chart = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+      const bubbleLayer = chart.append("g");
 
-      const groups = chart
+      const groups = bubbleLayer
         .selectAll("g.node")
         .data(nodes)
         .join("g")
@@ -291,6 +294,50 @@ export default function BloatIndex() {
         .attr("font-size", (d) => Math.min(22, Math.max(12, radiusScale(d.employees) / 2.3)))
         .attr("letter-spacing", "0.08em")
         .text((d) => d.ticker);
+
+      const minScale = Math.max(0.42, Math.min(innerWidth / canvasWidth, innerHeight / canvasHeight));
+      const initialTransform = d3.zoomIdentity
+        .translate(
+          (innerWidth - canvasWidth * minScale) / 2,
+          (innerHeight - canvasHeight * minScale) / 2
+        )
+        .scale(minScale);
+
+      const zoomBehavior = d3
+        .zoom<SVGGElement, unknown>()
+        .scaleExtent([minScale, 2.4])
+        .extent([
+          [0, 0],
+          [innerWidth, innerHeight]
+        ])
+        .translateExtent([
+          [0, 0],
+          [canvasWidth, canvasHeight]
+        ])
+        .on("zoom", (event) => {
+          bubbleLayer.attr("transform", event.transform.toString());
+        });
+
+      chart
+        .call(zoomBehavior)
+        .call(zoomBehavior.transform, initialTransform)
+        .on("dblclick.zoom", null)
+        .style("cursor", "grab");
+
+      chart
+        .on("mousedown", () => chart.style("cursor", "grabbing"))
+        .on("mouseup", () => chart.style("cursor", "grab"))
+        .on("mouseleave", () => chart.style("cursor", "grab"));
+
+      svg
+        .append("text")
+        .attr("x", margin.left + innerWidth - 8)
+        .attr("y", margin.top + innerHeight - 8)
+        .attr("text-anchor", "end")
+        .attr("fill", "var(--muted)")
+        .attr("font-family", "var(--font-mono)")
+        .attr("font-size", 10)
+        .text("SCROLL TO ZOOM - DRAG TO PAN");
     }
 
     if (viewMode === "SCATTER") {
