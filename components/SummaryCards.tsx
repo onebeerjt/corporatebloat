@@ -1,4 +1,4 @@
-import { formatEmployees, formatMoney } from "@/lib/formatters";
+import { formatEmployees, formatMoney, formatSignedPercent } from "@/lib/formatters";
 import type { Company, Mode } from "@/types/company";
 
 type SummaryCardsProps = {
@@ -6,48 +6,64 @@ type SummaryCardsProps = {
   companies: Company[];
 };
 
-function averageRevenuePerEmployee(companies: Company[]): number {
-  const values = companies
-    .map((company) => company.revenuePerEmployee)
-    .filter((value): value is number => value !== undefined);
-
+function average(values: number[]): number {
   if (values.length === 0) {
     return 0;
   }
-
   return values.reduce((sum, value) => sum + value, 0) / values.length;
 }
 
 export default function SummaryCards({ mode, companies }: SummaryCardsProps) {
   const totalEmployees = companies.reduce((sum, company) => sum + (company.employees ?? 0), 0);
-  const avgRpe = averageRevenuePerEmployee(companies);
+  const avgRpe = average(
+    companies
+      .map((company) => company.revenuePerEmployee)
+      .filter((value): value is number => value !== undefined)
+  );
 
-  const mostEfficient = [...companies]
-    .filter((company) => company.efficiencyScore !== undefined)
-    .sort((a, b) => (b.efficiencyScore ?? 0) - (a.efficiencyScore ?? 0))[0];
-
-  const highestRisk = [...companies]
-    .filter((company) => company.layoffRiskScore !== undefined)
-    .sort((a, b) => (b.layoffRiskScore ?? 0) - (a.layoffRiskScore ?? 0))[0];
-
-  const highRisk = companies.filter((company) => company.layoffRiskLabel === "High");
-  const highRiskEmployees = highRisk.reduce((sum, company) => sum + (company.employees ?? 0), 0);
-  const bloatedCount = companies.filter((company) => company.efficiencyLabel === "Bloated").length;
+  const topEfficiency = [...companies].sort((a, b) => (b.efficiencyScore ?? 0) - (a.efficiencyScore ?? 0))[0];
+  const highSupply = companies.filter((company) => company.supplyChainRiskLabel === "High");
+  const avgGrowthGap = average(
+    companies.map((company) => company.growthGap).filter((value): value is number => value !== undefined)
+  );
+  const worstGrowthGap = [...companies].sort((a, b) => (b.growthGap ?? -999) - (a.growthGap ?? -999))[0];
+  const highestSupply = [...companies].sort(
+    (a, b) => (b.supplyChainRiskScore ?? 0) - (a.supplyChainRiskScore ?? 0)
+  )[0];
 
   const cards =
     mode === "efficiency"
       ? [
           { label: "Total Employees Covered", value: formatEmployees(totalEmployees), accent: false },
           { label: "Avg Revenue / Employee", value: formatMoney(avgRpe), accent: false },
-          { label: "Most Efficient Ticker", value: mostEfficient?.symbol ?? "N/A", accent: true },
-          { label: "Companies Flagged Bloated", value: String(bloatedCount), accent: true }
+          { label: "Most Efficient Ticker", value: topEfficiency?.symbol ?? "N/A", accent: true },
+          {
+            label: "Companies Below Industry Median",
+            value: String(companies.filter((item) => (item.industryEfficiencyRatio ?? 1) < 1).length),
+            accent: true
+          }
         ]
-      : [
-          { label: "Companies High Risk", value: String(highRisk.length), accent: true },
-          { label: "Employees in High Risk Group", value: formatEmployees(highRiskEmployees), accent: false },
-          { label: "Highest Risk Ticker", value: highestRisk?.symbol ?? "N/A", accent: true },
-          { label: "Avg Revenue / Employee", value: formatMoney(avgRpe), accent: false }
-        ];
+      : mode === "workforce"
+        ? [
+            {
+              label: "Headcount Ahead of Revenue",
+              value: String(companies.filter((item) => (item.growthGap ?? 0) > 5).length),
+              accent: true
+            },
+            { label: "Average Growth Gap", value: formatSignedPercent(avgGrowthGap), accent: false },
+            { label: "Largest Growth Gap", value: worstGrowthGap?.symbol ?? "N/A", accent: true },
+            { label: "Avg Revenue / Employee", value: formatMoney(avgRpe), accent: false }
+          ]
+        : [
+            { label: "Companies High Supply Risk", value: String(highSupply.length), accent: true },
+            {
+              label: "Employees in High Risk Group",
+              value: formatEmployees(highSupply.reduce((sum, item) => sum + (item.employees ?? 0), 0)),
+              accent: false
+            },
+            { label: "Highest Exposure Ticker", value: highestSupply?.symbol ?? "N/A", accent: true },
+            { label: "Avg Revenue / Employee", value: formatMoney(avgRpe), accent: false }
+          ];
 
   return (
     <div className="grid grid-cols-2 gap-3 md:grid-cols-4">

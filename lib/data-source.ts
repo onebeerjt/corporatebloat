@@ -1,4 +1,5 @@
-import mockCompanies from "@/data/mock-companies.json";
+import seedCompanies from "@/data/companies.json";
+import { inferOperatingModel } from "@/lib/classification";
 import { FMP_BASE_URL } from "@/lib/constants";
 import { scoreCompanies } from "@/lib/scoring";
 import type { Company } from "@/types/company";
@@ -48,23 +49,34 @@ function normalizeCompany(company: Partial<Company>): Company | null {
     return null;
   }
 
-  return {
+  const normalized: Company = {
     symbol: company.symbol,
     name: company.name,
     sector: normalizeSector(company.sector),
     industry: company.industry,
+    operatingModel: company.operatingModel,
     revenue: toNumber(company.revenue),
     marketCap: toNumber(company.marketCap),
     employees: toNumber(company.employees),
     price: toNumber(company.price),
     country: company.country,
     website: company.website,
-    description: company.description
+    description: company.description,
+    revenueGrowth: toNumber(company.revenueGrowth),
+    headcountGrowth: toNumber(company.headcountGrowth),
+    supplyExposure: company.supplyExposure,
+    techStack: company.techStack
   };
+
+  if (!normalized.operatingModel) {
+    normalized.operatingModel = inferOperatingModel(normalized);
+  }
+
+  return normalized;
 }
 
 function getMockCompanies(): Company[] {
-  const parsed = (mockCompanies as Company[])
+  const parsed = (seedCompanies as Company[])
     .map((company) => normalizeCompany(company))
     .filter((company): company is Company => company !== null);
 
@@ -72,7 +84,7 @@ function getMockCompanies(): Company[] {
 }
 
 async function fetchFromFmp(apiKey: string): Promise<Company[] | null> {
-  const seeds = mockCompanies as Company[];
+  const seeds = seedCompanies as Company[];
   const symbols = seeds.map((company) => company.symbol).slice(0, 120);
 
   try {
@@ -105,13 +117,18 @@ async function fetchFromFmp(apiKey: string): Promise<Company[] | null> {
           name: profile.companyName ?? seed?.name,
           sector: profile.sector ?? seed?.sector,
           industry: profile.industry ?? seed?.industry,
+          operatingModel: seed?.operatingModel,
           revenue,
           marketCap: toNumber(profile.mktCap) ?? seed?.marketCap,
           employees: toNumber(profile.fullTimeEmployees) ?? seed?.employees,
           price: toNumber(profile.price),
           country: profile.country ?? seed?.country,
           website: profile.website ?? seed?.website,
-          description: profile.description
+          description: profile.description,
+          revenueGrowth: seed?.revenueGrowth,
+          headcountGrowth: seed?.headcountGrowth,
+          supplyExposure: seed?.supplyExposure,
+          techStack: seed?.techStack
         });
       })
       .filter((company): company is Company => company !== null && !!company.revenue && !!company.employees);

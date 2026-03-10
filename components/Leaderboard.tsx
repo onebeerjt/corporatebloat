@@ -1,4 +1,4 @@
-import { formatEmployees, formatMoney } from "@/lib/formatters";
+import { formatEmployees, formatMoney, formatScore, formatSignedPercent } from "@/lib/formatters";
 import type { Company, Mode, SortKey } from "@/types/company";
 
 type LeaderboardProps = {
@@ -6,13 +6,19 @@ type LeaderboardProps = {
   sortKey: SortKey;
   companies: Company[];
   selectedSymbol: string | null;
+  reportSymbols: Set<string>;
   onSelectCompany: (company: Company) => void;
+  onAddToReport: (company: Company) => void;
 };
 
-function sortLabel(mode: Mode, company: Company): string {
-  return mode === "efficiency"
-    ? company.efficiencyLabel ?? "N/A"
-    : company.layoffRiskLabel ?? "N/A";
+function modeValue(mode: Mode, company: Company): string {
+  if (mode === "efficiency") {
+    return company.efficiencyLabel ?? "N/A";
+  }
+  if (mode === "workforce") {
+    return company.workforceMomentum ?? "N/A";
+  }
+  return `${formatScore(company.supplyChainRiskScore)} (${company.supplyChainRiskLabel ?? "N/A"})`;
 }
 
 export default function Leaderboard({
@@ -20,7 +26,9 @@ export default function Leaderboard({
   sortKey,
   companies,
   selectedSymbol,
-  onSelectCompany
+  reportSymbols,
+  onSelectCompany,
+  onAddToReport
 }: LeaderboardProps) {
   return (
     <section className="border border-[var(--border)] bg-[var(--surface)]">
@@ -32,7 +40,7 @@ export default function Leaderboard({
       </header>
 
       <div className="max-h-[560px] overflow-auto">
-        <table className="w-full min-w-[780px] border-collapse">
+        <table className="w-full min-w-[920px] border-collapse">
           <thead className="sticky top-0 bg-[rgba(17,17,20,0.98)]">
             <tr className="border-b border-[var(--border)]">
               <th className="px-3 py-2 text-left font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
@@ -51,19 +59,27 @@ export default function Leaderboard({
                 Revenue / Employee
               </th>
               <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
+                Growth Gap
+              </th>
+              <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
                 Employees
               </th>
               <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
                 Revenue
               </th>
               <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
-                {mode === "efficiency" ? "Efficiency Label" : "Risk Label"}
+                Mode Signal
+              </th>
+              <th className="px-3 py-2 text-right font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
+                Report
               </th>
             </tr>
           </thead>
           <tbody>
             {companies.map((company, index) => {
               const active = selectedSymbol === company.symbol;
+              const inReport = reportSymbols.has(company.symbol);
+
               return (
                 <tr
                   key={company.symbol}
@@ -79,11 +95,29 @@ export default function Leaderboard({
                   <td className="px-3 py-2 text-right font-mono text-xs">
                     {formatMoney(company.revenuePerEmployee)}
                   </td>
+                  <td className="px-3 py-2 text-right font-mono text-xs">{formatSignedPercent(company.growthGap)}</td>
                   <td className="px-3 py-2 text-right font-mono text-xs">
                     {formatEmployees(company.employees)}
                   </td>
                   <td className="px-3 py-2 text-right font-mono text-xs">{formatMoney(company.revenue)}</td>
-                  <td className="px-3 py-2 text-right font-mono text-xs">{sortLabel(mode, company)}</td>
+                  <td className="px-3 py-2 text-right font-mono text-xs">{modeValue(mode, company)}</td>
+                  <td className="px-3 py-2 text-right">
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        onAddToReport(company);
+                      }}
+                      disabled={inReport}
+                      className={`border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] ${
+                        inReport
+                          ? "border-[var(--border)] text-[var(--muted)]"
+                          : "border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black"
+                      }`}
+                    >
+                      {inReport ? "Added" : "+ Add to Report"}
+                    </button>
+                  </td>
                 </tr>
               );
             })}

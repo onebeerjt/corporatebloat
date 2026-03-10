@@ -1,28 +1,34 @@
-import type { SortKey } from "@/types/company";
+import { OPERATING_MODEL_OPTIONS, SORT_OPTIONS } from "@/lib/constants";
+import type { OperatingModel, SortKey } from "@/types/company";
 
 type FiltersProps = {
   sectors: string[];
+  industries: string[];
   sector: string;
+  industry: string;
   sortKey: SortKey;
+  operatingModel: OperatingModel | "ALL";
+  knowledgeOnly: boolean;
   onSectorChange: (sector: string) => void;
+  onIndustryChange: (industry: string) => void;
   onSortChange: (sort: SortKey) => void;
+  onOperatingModelChange: (model: OperatingModel | "ALL") => void;
+  onKnowledgeOnlyChange: (value: boolean) => void;
 };
-
-const SORT_OPTIONS: { label: string; value: SortKey }[] = [
-  { label: "Layoff Risk", value: "layoffRiskScore" },
-  { label: "Efficiency Score", value: "efficiencyScore" },
-  { label: "Revenue / Employee", value: "revenuePerEmployee" },
-  { label: "Company", value: "name" },
-  { label: "Employees", value: "employees" },
-  { label: "Revenue", value: "revenue" }
-];
 
 export default function Filters({
   sectors,
+  industries,
   sector,
+  industry,
   sortKey,
+  operatingModel,
+  knowledgeOnly,
   onSectorChange,
-  onSortChange
+  onIndustryChange,
+  onSortChange,
+  onOperatingModelChange,
+  onKnowledgeOnlyChange
 }: FiltersProps) {
   return (
     <>
@@ -34,6 +40,37 @@ export default function Filters({
           className="border border-[var(--border)] bg-[var(--bg)] px-2 py-1 font-mono text-xs uppercase tracking-[0.08em] text-[var(--text)] outline-none"
         >
           {sectors.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="flex items-center gap-2">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">Industry</span>
+        <select
+          value={industry}
+          onChange={(event) => onIndustryChange(event.target.value)}
+          className="border border-[var(--border)] bg-[var(--bg)] px-2 py-1 font-mono text-xs uppercase tracking-[0.08em] text-[var(--text)] outline-none"
+        >
+          {industries.map((item) => (
+            <option key={item} value={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="flex items-center gap-2">
+        <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">Operating Model</span>
+        <select
+          value={operatingModel}
+          onChange={(event) => onOperatingModelChange(event.target.value as OperatingModel | "ALL")}
+          className="border border-[var(--border)] bg-[var(--bg)] px-2 py-1 font-mono text-xs uppercase tracking-[0.08em] text-[var(--text)] outline-none"
+        >
+          <option value="ALL">All</option>
+          {OPERATING_MODEL_OPTIONS.map((item) => (
             <option key={item} value={item}>
               {item}
             </option>
@@ -55,6 +92,27 @@ export default function Filters({
           ))}
         </select>
       </label>
+
+      <div className="inline-flex items-center gap-1 border border-[var(--border)] bg-[var(--bg)] p-1">
+        <button
+          type="button"
+          onClick={() => onKnowledgeOnlyChange(false)}
+          className={`px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${
+            !knowledgeOnly ? "bg-[var(--accent)] text-black" : "text-[var(--muted)]"
+          }`}
+        >
+          All Companies
+        </button>
+        <button
+          type="button"
+          onClick={() => onKnowledgeOnlyChange(true)}
+          className={`px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${
+            knowledgeOnly ? "bg-[var(--accent)] text-black" : "text-[var(--muted)]"
+          }`}
+        >
+          Knowledge Economy
+        </button>
+      </div>
     </>
   );
 }

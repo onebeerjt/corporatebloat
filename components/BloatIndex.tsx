@@ -4,13 +4,17 @@ import { useEffect, useMemo, useState } from "react";
 
 import BubbleChart from "@/components/BubbleChart";
 import CompanyDrawer from "@/components/CompanyDrawer";
+import CompanyReport from "@/components/CompanyReport";
+import CompanyReportBuilder from "@/components/CompanyReportBuilder";
 import Filters from "@/components/Filters";
 import Leaderboard from "@/components/Leaderboard";
 import Methodology from "@/components/Methodology";
 import ModeToggle from "@/components/ModeToggle";
 import SearchBar from "@/components/SearchBar";
 import SummaryCards from "@/components/SummaryCards";
-import type { Company, CompanyApiResponse, Mode, SortKey } from "@/types/company";
+import { isKnowledgeEconomy } from "@/lib/classification";
+import { MOMENTUM_COLORS, RISK_COLORS } from "@/lib/constants";
+import type { Company, CompanyApiResponse, Mode, OperatingModel, SortKey } from "@/types/company";
 
 type LoadState = "idle" | "loading" | "success" | "error";
 
@@ -45,12 +49,17 @@ export default function BloatIndex() {
   const [mode, setMode] = useState<Mode>("efficiency");
   const [sortKey, setSortKey] = useState<SortKey>("efficiencyScore");
   const [sector, setSector] = useState("ALL SECTORS");
+  const [industry, setIndustry] = useState("ALL INDUSTRIES");
+  const [operatingModel, setOperatingModel] = useState<OperatingModel | "ALL">("ALL");
+  const [knowledgeOnly, setKnowledgeOnly] = useState(false);
   const [search, setSearch] = useState("");
   const [loadState, setLoadState] = useState<LoadState>("idle");
   const [source, setSource] = useState<"fmp" | "mock">("mock");
   const [companies, setCompanies] = useState<Company[]>([]);
   const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [reportSymbols, setReportSymbols] = useState<string[]>([]);
+  const [reportGenerated, setReportGenerated] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -88,11 +97,29 @@ export default function BloatIndex() {
   }, []);
 
   useEffect(() => {
-    setSortKey(mode === "efficiency" ? "efficiencyScore" : "layoffRiskScore");
+    if (mode === "efficiency") {
+      setSortKey("efficiencyScore");
+      return;
+    }
+
+    if (mode === "workforce") {
+      setSortKey("growthGap");
+      return;
+    }
+
+    setSortKey("supplyChainRiskScore");
   }, [mode]);
 
   const sectors = useMemo(
     () => ["ALL SECTORS", ...Array.from(new Set(companies.map((company) => company.sector))).sort()],
+    [companies]
+  );
+
+  const industries = useMemo(
+    () => [
+      "ALL INDUSTRIES",
+      ...Array.from(new Set(companies.map((company) => company.industry).filter(Boolean) as string[])).sort()
+    ],
     [companies]
   );
 
@@ -101,15 +128,26 @@ export default function BloatIndex() {
 
     return companies.filter((company) => {
       const matchesSector = sector === "ALL SECTORS" || company.sector === sector;
+      const matchesIndustry = industry === "ALL INDUSTRIES" || company.industry === industry;
+      const matchesModel = operatingModel === "ALL" || company.operatingModel === operatingModel;
+      const matchesKnowledge = !knowledgeOnly || isKnowledgeEconomy(company);
       const matchesSearch =
         term.length === 0 ||
         company.symbol.toLowerCase().includes(term) ||
         company.name.toLowerCase().includes(term);
-      return matchesSector && matchesSearch;
+
+      return matchesSector && matchesIndustry && matchesModel && matchesKnowledge && matchesSearch;
     });
-  }, [companies, search, sector]);
+  }, [companies, industry, knowledgeOnly, operatingModel, search, sector]);
 
   const rankedCompanies = useMemo(() => sortCompanies(filteredCompanies, sortKey), [filteredCompanies, sortKey]);
+
+  const reportCompanies = useMemo(() => {
+    const lookup = new Map(companies.map((company) => [company.symbol, company]));
+    return reportSymbols.map((symbol) => lookup.get(symbol)).filter((company): company is Company => !!company);
+  }, [companies, reportSymbols]);
+
+  const reportSymbolSet = useMemo(() => new Set(reportSymbols), [reportSymbols]);
 
   const activeLegend =
     mode === "efficiency"
@@ -118,21 +156,45 @@ export default function BloatIndex() {
           { label: "Normal", color: "var(--yellow)" },
           { label: "Bloated", color: "var(--accent)" }
         ]
-      : [
-          { label: "Low", color: "var(--green)" },
-          { label: "Medium", color: "var(--yellow)" },
-          { label: "High", color: "var(--accent)" }
-        ];
+      : mode === "workforce"
+        ? [
+            { label: "Lean scaling", color: MOMENTUM_COLORS["Lean scaling"] },
+            { label: "Balanced", color: MOMENTUM_COLORS["Balanced growth"] },
+            { label: "Headcount ahead", color: MOMENTUM_COLORS["Headcount expansion ahead of revenue"] }
+          ]
+        : [
+            { label: "Low", color: RISK_COLORS.Low },
+            { label: "Medium", color: RISK_COLORS.Medium },
+            { label: "High", color: RISK_COLORS.High }
+          ];
 
   const openCompany = (company: Company) => {
     setSelectedCompany(company);
     setDrawerOpen(true);
   };
 
+  const addToReport = (company: Company) => {
+    setReportSymbols((current) => {
+      if (current.includes(company.symbol) || current.length >= 10) {
+        return current;
+      }
+      return [...current, company.symbol];
+    });
+  };
+
+  const removeFromReport = (symbol: string) => {
+    setReportSymbols((current) => current.filter((item) => item !== symbol));
+  };
+
+  const clearReport = () => {
+    setReportSymbols([]);
+    setReportGenerated(false);
+  };
+
   if (loadState === "loading" || loadState === "idle") {
     return (
       <section className="mx-auto w-full max-w-[1480px] border border-[var(--border)] bg-[var(--surface)] p-8">
-        <p className="font-display text-5xl tracking-[0.08em]">Loading Corporate Bloat Index...</p>
+        <p className="font-display text-5xl tracking-[0.08em]">Loading Corporate Operations Explorer...</p>
       </section>
     );
   }
@@ -149,13 +211,13 @@ export default function BloatIndex() {
   }
 
   return (
-    <section className="mx-auto flex w-full max-w-[1480px] flex-col gap-5 pb-10">
+    <section className="mx-auto flex w-full max-w-[1480px] flex-col gap-5 pb-20">
       <header className="border border-[var(--border)] bg-[var(--surface)] px-5 py-4">
         <h1 className="font-display text-5xl leading-none tracking-[0.14em] md:text-7xl">
-          CORPORATE <span className="text-[var(--accent)]">BLOAT</span> INDEX
+          CORPORATE <span className="text-[var(--accent)]">OPERATIONS</span> EXPLORER
         </h1>
         <p className="mt-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--muted)] md:text-sm">
-          Corporate Efficiency Index + Layoff Risk Radar
+          Bloomberg-style operational intelligence for public companies
         </p>
       </header>
 
@@ -166,10 +228,17 @@ export default function BloatIndex() {
           <ModeToggle mode={mode} onChange={setMode} />
           <Filters
             sectors={sectors}
+            industries={industries}
             sector={sector}
+            industry={industry}
             sortKey={sortKey}
+            operatingModel={operatingModel}
+            knowledgeOnly={knowledgeOnly}
             onSectorChange={setSector}
+            onIndustryChange={setIndustry}
             onSortChange={setSortKey}
+            onOperatingModelChange={setOperatingModel}
+            onKnowledgeOnlyChange={setKnowledgeOnly}
           />
           <SearchBar value={search} onChange={setSearch} />
         </div>
@@ -193,7 +262,9 @@ export default function BloatIndex() {
           companies={rankedCompanies}
           mode={mode}
           selectedSymbol={selectedCompany?.symbol ?? null}
+          reportSymbols={reportSymbolSet}
           onSelectCompany={openCompany}
+          onAddToReport={addToReport}
         />
 
         <Leaderboard
@@ -201,13 +272,30 @@ export default function BloatIndex() {
           sortKey={sortKey}
           companies={rankedCompanies}
           selectedSymbol={selectedCompany?.symbol ?? null}
+          reportSymbols={reportSymbolSet}
           onSelectCompany={openCompany}
+          onAddToReport={addToReport}
         />
       </div>
 
+      <CompanyReport companies={reportCompanies} generated={reportGenerated} />
       <Methodology />
 
-      <CompanyDrawer company={selectedCompany} open={drawerOpen} onClose={() => setDrawerOpen(false)} />
+      <CompanyReportBuilder
+        selectedCompanies={reportCompanies}
+        onGenerate={() => setReportGenerated(true)}
+        onClear={clearReport}
+        onRemove={removeFromReport}
+      />
+
+      <CompanyDrawer
+        company={selectedCompany}
+        open={drawerOpen}
+        inReport={selectedCompany ? reportSymbolSet.has(selectedCompany.symbol) : false}
+        onClose={() => setDrawerOpen(false)}
+        onAddToReport={addToReport}
+      />
+
       {drawerOpen ? (
         <button
           type="button"

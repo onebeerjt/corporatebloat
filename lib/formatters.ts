@@ -49,3 +49,11 @@ export function formatPercent(value?: number): string {
   }
   return `${value.toFixed(1)}%`;
 }
+
+export function formatSignedPercent(value?: number): string {
+  if (value === undefined || Number.isNaN(value)) {
+    return "N/A";
+  }
+  const sign = value > 0 ? "+" : "";
+  return `${sign}${value.toFixed(1)}%`;
+}

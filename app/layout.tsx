@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Corporate Bloat Index",
-  description: "Public Company Headcount vs. Revenue Efficiency"
+  title: "Corporate Operations Explorer",
+  description: "Operational intelligence dashboard for public companies"
 };
 
 export default function RootLayout({

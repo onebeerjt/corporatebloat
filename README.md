@@ -1,21 +1,12 @@
-# Corporate Bloat Index
+# Corporate Operations Explorer
 
-Corporate Bloat Index is a Next.js finance-style dashboard that combines two exploratory views:
+Corporate Operations Explorer is a Next.js dashboard for comparing public companies on operational efficiency, workforce momentum, and supply-chain exposure.
 
-- Corporate Efficiency Index
-- Layoff Risk Radar
-
-The app keeps an interactive D3 bubble chart as the hero and adds mode-aware summaries, a sortable leaderboard, and a company detail drawer.
-
-## Features
-
-- Efficiency mode with percentile-based efficiency scores from revenue per employee
-- Layoff Risk mode with transparent heuristic risk scoring (not a prediction model)
-- Bubble chart with zoom + pan, hover tooltip, and selected bubble highlight
-- Leaderboard with click-to-select row/bubble sync
-- Right-side company detail drawer with score explanations
-- Sector filtering, search, and sort controls
-- API route with live-data attempt + mock fallback
+It preserves the Bloomberg-style dark UI and interactive bubble chart while adding:
+- report-builder workflows
+- deterministic comparison reports
+- operating model and knowledge-economy filters
+- prospecting signals from simple transparent rules
 
 ## Stack
 
@@ -23,9 +14,8 @@ The app keeps an interactive D3 bubble chart as the hero and adds mode-aware sum
 - TypeScript
 - Tailwind CSS
 - D3.js (bubble visualization)
-- Vercel-friendly server route handlers
 
-## Setup
+## Run Locally
 
 ```bash
 npm install
@@ -40,42 +30,59 @@ Open [http://localhost:3000](http://localhost:3000).
 FMP_API_KEY=your_key_here
 ```
 
-- If `FMP_API_KEY` is set, `/api/companies` attempts to fetch company profiles from Financial Modeling Prep.
-- If API access fails or the key is missing, the app automatically falls back to `/data/mock-companies.json`.
+- If `FMP_API_KEY` is present, `/api/companies` attempts Financial Modeling Prep profile data.
+- If live fetch fails or key is missing, app uses local `/data/companies.json`.
 
-## Data Source Options
+## Data Model Highlights
 
-Primary:
-- Financial Modeling Prep profile endpoint via `lib/data-source.ts`
+Each company includes:
+- `symbol`, `name`, `sector`, `industry`, `operatingModel`
+- `revenue`, `employees`, `marketCap`
+- `revenueGrowth`, `headcountGrowth`
+- `supplyExposure` tags
+- `techStack` placeholders
 
-Fallback:
-- Local curated mock dataset (`/data/mock-companies.json`)
+Derived metrics:
+- `revenuePerEmployee`
+- `efficiencyScore` + label
+- `growthGap` + workforce momentum label
+- `supplyChainRiskScore` + label
+- `layoffRiskScore` + label
+- `industryEfficiencyRatio`
+
+## Product Features
+
+- Bubble chart with zoom/pan, tooltip, selection, and `+ Add to Report`
+- Leaderboard with `+ Add to Report` per row
+- Report builder (up to 10 companies)
+- Generated deterministic comparison report
+- Filters: sector, industry, operating model, knowledge-economy quick toggle, search
+- Modes: Efficiency, Workforce Momentum, Supply Exposure
+- Company drawer with supply tags, tech stack, and prospecting insight rules
 
 ## Methodology Summary
 
 - Revenue per employee = revenue / employees
-- Efficiency score = percentile rank of revenue per employee, normalized to 0-100
-- Efficiency labels:
-  - Lean: top tier
-  - Normal: middle tier
-  - Bloated: lower tier
-- Layoff risk score is a heuristic based on:
-  - bottom revenue/employee percentile
-  - workforce scale combined with low efficiency
-  - labor-heavy sector combined with low efficiency
-  - extra penalty for bottom 15% efficiency
-- Risk labels:
-  - Low: 0-1 points
-  - Medium: 2-3 points
-  - High: 4+ points
+- Efficiency score = percentile rank within dataset
+- Workforce momentum = `headcountGrowth - revenueGrowth`
+  - `<= -5`: Lean scaling
+  - `-5 to +5`: Balanced growth
+  - `> +5`: Headcount expansion ahead of revenue
+- Supply chain risk score = weighted level mapping across:
+  - China manufacturing
+  - Taiwan semiconductors
+  - Red Sea shipping
+  - Panama Canal
+  - European energy
+- Prospecting signals are deterministic if/then rules (no ML)
 
-Important:
-- Layoff risk is an inferred signal/proxy from public fundamentals.
-- It is not investment advice, employment advice, or a forecast model.
+## Important Disclaimer
 
-## Deployment
+Layoff risk and prospecting outputs are heuristic operational signals from public-style fundamentals and mock exposure tags. They are not forecasts, employment advice, or investment advice.
 
-- Import this repo into Vercel and deploy with default settings, or:
+## Deploy
+
+- Connect the repo to Vercel and deploy with defaults, or:
 
 ```bash
 vercel deploy

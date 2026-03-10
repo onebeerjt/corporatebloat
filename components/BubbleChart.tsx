@@ -3,15 +3,17 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import * as d3 from "d3";
 
-import { EFFICIENCY_COLORS, RISK_COLORS } from "@/lib/constants";
-import { formatEmployees, formatMoney } from "@/lib/formatters";
+import { EFFICIENCY_COLORS, MOMENTUM_COLORS, RISK_COLORS } from "@/lib/constants";
+import { formatEmployees, formatMoney, formatScore, formatSignedPercent } from "@/lib/formatters";
 import type { Company, Mode } from "@/types/company";
 
 type BubbleChartProps = {
   companies: Company[];
   mode: Mode;
   selectedSymbol: string | null;
+  reportSymbols: Set<string>;
   onSelectCompany: (company: Company) => void;
+  onAddToReport: (company: Company) => void;
 };
 
 type TooltipState = {
@@ -24,13 +26,23 @@ type TooltipState = {
 type NodeDatum = Company & d3.SimulationNodeDatum;
 
 function bubbleColor(company: Company, mode: Mode): string {
-  if (mode === "risk") {
-    return RISK_COLORS[company.layoffRiskLabel ?? "Medium"];
+  if (mode === "workforce") {
+    return MOMENTUM_COLORS[company.workforceMomentum ?? "Balanced growth"];
+  }
+  if (mode === "supply") {
+    return RISK_COLORS[company.supplyChainRiskLabel ?? "Medium"];
   }
   return EFFICIENCY_COLORS[company.efficiencyLabel ?? "Normal"];
 }
 
-export default function BubbleChart({ companies, mode, selectedSymbol, onSelectCompany }: BubbleChartProps) {
+export default function BubbleChart({
+  companies,
+  mode,
+  selectedSymbol,
+  reportSymbols,
+  onSelectCompany,
+  onAddToReport
+}: BubbleChartProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const chartWrapRef = useRef<HTMLDivElement | null>(null);
 
@@ -128,8 +140,8 @@ export default function BubbleChart({ companies, mode, selectedSymbol, onSelectC
     const bubbleLayer = chart.append("g");
 
     const positionTooltip = (clientX: number, clientY: number) => {
-      const tooltipWidth = 290;
-      const tooltipHeight = 210;
+      const tooltipWidth = 320;
+      const tooltipHeight = 250;
       const padding = 12;
 
       return {
@@ -228,7 +240,7 @@ export default function BubbleChart({ companies, mode, selectedSymbol, onSelectC
 
       {tooltip.visible && tooltip.company ? (
         <div
-          className="pointer-events-none fixed z-[1100] min-w-[240px] border border-[var(--border)] border-l-[3px] border-l-[var(--accent)] bg-[rgba(8,8,10,0.96)] p-3"
+          className="fixed z-[1100] min-w-[260px] border border-[var(--border)] border-l-[3px] border-l-[var(--accent)] bg-[rgba(8,8,10,0.96)] p-3"
           style={{ left: tooltip.x, top: tooltip.y }}
         >
           <p className="font-display text-[26px] leading-none">{tooltip.company.symbol}</p>
@@ -237,22 +249,40 @@ export default function BubbleChart({ companies, mode, selectedSymbol, onSelectC
           </p>
           <div className="mt-3 space-y-1 font-mono text-[11px]">
             <div className="flex items-center justify-between border-b border-[var(--border)] pb-1">
-              <span className="text-[var(--muted)]">Employees</span>
-              <span>{formatEmployees(tooltip.company.employees)}</span>
-            </div>
-            <div className="flex items-center justify-between border-b border-[var(--border)] pb-1">
-              <span className="text-[var(--muted)]">Revenue</span>
-              <span>{formatMoney(tooltip.company.revenue)}</span>
-            </div>
-            <div className="flex items-center justify-between border-b border-[var(--border)] pb-1">
               <span className="text-[var(--muted)]">Revenue / Employee</span>
               <span>{formatMoney(tooltip.company.revenuePerEmployee)}</span>
             </div>
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-1">
+              <span className="text-[var(--muted)]">Workforce Momentum</span>
+              <span>{tooltip.company.workforceMomentum}</span>
+            </div>
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-1">
+              <span className="text-[var(--muted)]">Growth Gap</span>
+              <span>{formatSignedPercent(tooltip.company.growthGap)}</span>
+            </div>
+            <div className="flex items-center justify-between border-b border-[var(--border)] pb-1">
+              <span className="text-[var(--muted)]">Supply Risk</span>
+              <span>
+                {formatScore(tooltip.company.supplyChainRiskScore)} ({tooltip.company.supplyChainRiskLabel})
+              </span>
+            </div>
             <div className="flex items-center justify-between">
-              <span className="text-[var(--muted)]">{mode === "risk" ? "Risk" : "Efficiency"}</span>
-              <span>{mode === "risk" ? tooltip.company.layoffRiskLabel : tooltip.company.efficiencyLabel}</span>
+              <span className="text-[var(--muted)]">Employees</span>
+              <span>{formatEmployees(tooltip.company.employees)}</span>
             </div>
           </div>
+          <button
+            type="button"
+            disabled={reportSymbols.has(tooltip.company.symbol)}
+            onClick={() => onAddToReport(tooltip.company as Company)}
+            className={`mt-3 w-full border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] ${
+              reportSymbols.has(tooltip.company.symbol)
+                ? "border-[var(--border)] text-[var(--muted)]"
+                : "border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-black"
+            }`}
+          >
+            {reportSymbols.has(tooltip.company.symbol) ? "Added to Report" : "+ Add to Report"}
+          </button>
         </div>
       ) : null}
     </section>

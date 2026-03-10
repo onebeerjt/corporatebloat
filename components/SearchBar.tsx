@@ -10,7 +10,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
       <input
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        placeholder="Ticker or company"
+        placeholder="Search companies"
         className="w-44 border border-[var(--border)] bg-[var(--bg)] px-2 py-1 font-mono text-xs uppercase tracking-[0.08em] text-[var(--text)] outline-none md:w-56"
       />
     </label>

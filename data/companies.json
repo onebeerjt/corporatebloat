@@ -1,0 +1,1640 @@
+[
+  {
+    "symbol": "AAPL",
+    "name": "Apple",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 383000000000,
+    "marketCap": 3000000000000,
+    "employees": 161000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 6,
+    "headcountGrowth": 8,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "MSFT",
+    "name": "Microsoft",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 212000000000,
+    "marketCap": 3100000000000,
+    "employees": 221000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 11,
+    "headcountGrowth": 15,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "GOOGL",
+    "name": "Alphabet",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 307000000000,
+    "marketCap": 2000000000000,
+    "employees": 182000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 4,
+    "headcountGrowth": 14,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "META",
+    "name": "Meta Platforms",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 134000000000,
+    "marketCap": 1400000000000,
+    "employees": 67000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 15,
+    "headcountGrowth": -4,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "Oracle ERP",
+      "crm": "Dynamics 365",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "NVDA",
+    "name": "NVIDIA",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 60000000000,
+    "marketCap": 3300000000000,
+    "employees": 29600,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 17,
+    "headcountGrowth": -2,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Microsoft Dynamics",
+      "crm": "HubSpot",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "AMZN",
+    "name": "Amazon",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 575000000000,
+    "marketCap": 1900000000000,
+    "employees": 1525000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 7,
+    "headcountGrowth": 11,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "TSLA",
+    "name": "Tesla",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 97000000000,
+    "marketCap": 700000000000,
+    "employees": 127855,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 5,
+    "headcountGrowth": 9,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Salesforce",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "ORCL",
+    "name": "Oracle",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 53000000000,
+    "marketCap": 450000000000,
+    "employees": 164000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 1,
+    "headcountGrowth": 5,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "ADBE",
+    "name": "Adobe",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 19400000000,
+    "marketCap": 200000000000,
+    "employees": 30000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 11,
+    "headcountGrowth": 11,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "CRM",
+    "name": "Salesforce",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 34900000000,
+    "marketCap": 250000000000,
+    "employees": 73000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 15,
+    "headcountGrowth": 11,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "AMD",
+    "name": "AMD",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 22700000000,
+    "marketCap": 200000000000,
+    "employees": 26000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": -1,
+    "headcountGrowth": -5,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "INTC",
+    "name": "Intel",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 54000000000,
+    "marketCap": 90000000000,
+    "employees": 124800,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": -1,
+    "headcountGrowth": 3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "CSCO",
+    "name": "Cisco",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 57000000000,
+    "marketCap": 200000000000,
+    "employees": 84900,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 16,
+    "headcountGrowth": -3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Salesforce",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "IBM",
+    "name": "IBM",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 61900000000,
+    "marketCap": 170000000000,
+    "employees": 288000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 5,
+    "headcountGrowth": 1,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "HubSpot",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "SAP",
+    "name": "SAP SE",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 31000000000,
+    "marketCap": 230000000000,
+    "employees": 105000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 17,
+    "headcountGrowth": 13,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "HubSpot",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "INFY",
+    "name": "Infosys",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 18600000000,
+    "marketCap": 75000000000,
+    "employees": 343000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 7,
+    "headcountGrowth": 11,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "WIT",
+    "name": "Wipro",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 11200000000,
+    "marketCap": 26000000000,
+    "employees": 258000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 10,
+    "headcountGrowth": 8,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "TCS",
+    "name": "TCS",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 27000000000,
+    "marketCap": 140000000000,
+    "employees": 614000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 0,
+    "headcountGrowth": -2,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "SNAP",
+    "name": "Snap Inc.",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 4600000000,
+    "marketCap": 18000000000,
+    "employees": 5289,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 3,
+    "headcountGrowth": 7,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "NFLX",
+    "name": "Netflix",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 33700000000,
+    "marketCap": 360000000000,
+    "employees": 13000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 9,
+    "headcountGrowth": 13,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "HubSpot",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "UBER",
+    "name": "Uber",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 37300000000,
+    "marketCap": 140000000000,
+    "employees": 32100,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": -1,
+    "headcountGrowth": 3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "ABNB",
+    "name": "Airbnb",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 9900000000,
+    "marketCap": 75000000000,
+    "employees": 6907,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 18,
+    "headcountGrowth": -3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "Oracle ERP",
+      "crm": "Salesforce",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "SHOP",
+    "name": "Shopify",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 7100000000,
+    "marketCap": 110000000000,
+    "employees": 11600,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 11,
+    "headcountGrowth": 15,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "PYPL",
+    "name": "PayPal",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 29800000000,
+    "marketCap": 70000000000,
+    "employees": 26500,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": -1,
+    "headcountGrowth": 5,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Microsoft Dynamics",
+      "crm": "Dynamics 365",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "NOW",
+    "name": "ServiceNow",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 8970000000,
+    "marketCap": 190000000000,
+    "employees": 22000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 10,
+    "headcountGrowth": 8,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "PLTR",
+    "name": "Palantir",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 2230000000,
+    "marketCap": 85000000000,
+    "employees": 3838,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": -4,
+    "headcountGrowth": 2,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "SNOW",
+    "name": "Snowflake",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 2810000000,
+    "marketCap": 50000000000,
+    "employees": 7000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 1,
+    "headcountGrowth": 7,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "COIN",
+    "name": "Coinbase",
+    "sector": "Technology",
+    "industry": "Software & IT Services",
+    "revenue": 3600000000,
+    "marketCap": 52000000000,
+    "employees": 3800,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 17,
+    "headcountGrowth": -2,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Microsoft Dynamics",
+      "crm": "HubSpot",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "WMT",
+    "name": "Walmart",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 648000000000,
+    "marketCap": 700000000000,
+    "employees": 2100000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 14,
+    "headcountGrowth": 12,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "COST",
+    "name": "Costco",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 238000000000,
+    "marketCap": 390000000000,
+    "employees": 316000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 10,
+    "headcountGrowth": 14,
+    "supplyExposure": {
+      "chinaManufacturing": "Very High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Workday",
+      "crm": "Salesforce",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "TGT",
+    "name": "Target",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 109000000000,
+    "marketCap": 55000000000,
+    "employees": 440000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 5,
+    "headcountGrowth": 3,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "HD",
+    "name": "Home Depot",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 152000000000,
+    "marketCap": 370000000000,
+    "employees": 465000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": -2,
+    "headcountGrowth": 9,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "MCD",
+    "name": "McDonald's",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 25500000000,
+    "marketCap": 210000000000,
+    "employees": 150000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 1,
+    "headcountGrowth": -3,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "SBUX",
+    "name": "Starbucks",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 35900000000,
+    "marketCap": 90000000000,
+    "employees": 381000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": -4,
+    "headcountGrowth": 2,
+    "supplyExposure": {
+      "chinaManufacturing": "Very High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "Salesforce",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "NKE",
+    "name": "Nike",
+    "sector": "Retail",
+    "industry": "Retail & Consumer Services",
+    "revenue": 51400000000,
+    "marketCap": 100000000000,
+    "employees": 79000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 11,
+    "headcountGrowth": 7,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "High"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "Dynamics 365",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "F",
+    "name": "Ford",
+    "sector": "Manufacturing",
+    "industry": "Automotive & Manufacturing",
+    "revenue": 185000000000,
+    "marketCap": 50000000000,
+    "employees": 177000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": -3,
+    "headcountGrowth": 2,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "Salesforce",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "GM",
+    "name": "General Motors",
+    "sector": "Manufacturing",
+    "industry": "Automotive & Manufacturing",
+    "revenue": 172000000000,
+    "marketCap": 55000000000,
+    "employees": 163000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 6,
+    "headcountGrowth": -4,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "Salesforce",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "TM",
+    "name": "Toyota",
+    "sector": "Manufacturing",
+    "industry": "Automotive & Manufacturing",
+    "revenue": 274000000000,
+    "marketCap": 265000000000,
+    "employees": 375235,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": -4,
+    "headcountGrowth": 9,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "High"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Workday",
+      "crm": "HubSpot",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "JNJ",
+    "name": "Johnson & Johnson",
+    "sector": "Healthcare",
+    "industry": "Healthcare & Pharma",
+    "revenue": 85200000000,
+    "marketCap": 380000000000,
+    "employees": 152700,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 15,
+    "headcountGrowth": 11,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "Salesforce",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "UNH",
+    "name": "UnitedHealth",
+    "sector": "Healthcare",
+    "industry": "Healthcare & Pharma",
+    "revenue": 371000000000,
+    "marketCap": 530000000000,
+    "employees": 440000,
+    "country": "US",
+    "operatingModel": "Services",
+    "revenueGrowth": 1,
+    "headcountGrowth": -1,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "PFE",
+    "name": "Pfizer",
+    "sector": "Healthcare",
+    "industry": "Healthcare & Pharma",
+    "revenue": 58500000000,
+    "marketCap": 165000000000,
+    "employees": 88000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 8,
+    "headcountGrowth": 4,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "Very High"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "MRK",
+    "name": "Merck",
+    "sector": "Healthcare",
+    "industry": "Healthcare & Pharma",
+    "revenue": 60100000000,
+    "marketCap": 270000000000,
+    "employees": 69000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 0,
+    "headcountGrowth": -2,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "Very High"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "Dynamics 365",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "CVS",
+    "name": "CVS Health",
+    "sector": "Healthcare",
+    "industry": "Healthcare & Pharma",
+    "revenue": 357000000000,
+    "marketCap": 70000000000,
+    "employees": 300000,
+    "country": "US",
+    "operatingModel": "Services",
+    "revenueGrowth": 2,
+    "headcountGrowth": 0,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "AMGN",
+    "name": "Amgen",
+    "sector": "Healthcare",
+    "industry": "Healthcare & Pharma",
+    "revenue": 28200000000,
+    "marketCap": 155000000000,
+    "employees": 24400,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 11,
+    "headcountGrowth": 13,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "Very High"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "JPM",
+    "name": "JPMorgan Chase",
+    "sector": "Financials",
+    "industry": "Banking & Financial Services",
+    "revenue": 158000000000,
+    "marketCap": 600000000000,
+    "employees": 309926,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": -3,
+    "headcountGrowth": -5,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "BAC",
+    "name": "Bank of America",
+    "sector": "Financials",
+    "industry": "Banking & Financial Services",
+    "revenue": 98600000000,
+    "marketCap": 330000000000,
+    "employees": 213000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 10,
+    "headcountGrowth": 4,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "Very High",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "GS",
+    "name": "Goldman Sachs",
+    "sector": "Financials",
+    "industry": "Banking & Financial Services",
+    "revenue": 47400000000,
+    "marketCap": 175000000000,
+    "employees": 45900,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 12,
+    "headcountGrowth": 2,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "V",
+    "name": "Visa",
+    "sector": "Financials",
+    "industry": "Banking & Financial Services",
+    "revenue": 35900000000,
+    "marketCap": 575000000000,
+    "employees": 26500,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 13,
+    "headcountGrowth": -3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "MA",
+    "name": "Mastercard",
+    "sector": "Financials",
+    "industry": "Banking & Financial Services",
+    "revenue": 25100000000,
+    "marketCap": 455000000000,
+    "employees": 34000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 0,
+    "headcountGrowth": 11,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "SAP",
+      "crm": "Dynamics 365",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "BLK",
+    "name": "BlackRock",
+    "sector": "Financials",
+    "industry": "Banking & Financial Services",
+    "revenue": 18600000000,
+    "marketCap": 140000000000,
+    "employees": 21000,
+    "country": "US",
+    "operatingModel": "Knowledge Economy",
+    "revenueGrowth": 6,
+    "headcountGrowth": 2,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Microsoft Dynamics",
+      "crm": "Dynamics 365",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "XOM",
+    "name": "ExxonMobil",
+    "sector": "Energy",
+    "industry": "Energy",
+    "revenue": 398000000000,
+    "marketCap": 470000000000,
+    "employees": 62000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 10,
+    "headcountGrowth": 8,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "Salesforce",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "CVX",
+    "name": "Chevron",
+    "sector": "Energy",
+    "industry": "Energy",
+    "revenue": 200000000000,
+    "marketCap": 290000000000,
+    "employees": 43846,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 7,
+    "headcountGrowth": 5,
+    "supplyExposure": {
+      "chinaManufacturing": "High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Workday",
+      "crm": "Salesforce",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "SLB",
+    "name": "SLB",
+    "sector": "Energy",
+    "industry": "Energy",
+    "revenue": 35200000000,
+    "marketCap": 65000000000,
+    "employees": 100000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 14,
+    "headcountGrowth": 10,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "Very High"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "DIS",
+    "name": "Walt Disney",
+    "sector": "Media",
+    "industry": "Media & Entertainment",
+    "revenue": 89100000000,
+    "marketCap": 185000000000,
+    "employees": 225000,
+    "country": "US",
+    "operatingModel": "Services",
+    "revenueGrowth": 13,
+    "headcountGrowth": 9,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "CMCSA",
+    "name": "Comcast",
+    "sector": "Media",
+    "industry": "Media & Entertainment",
+    "revenue": 121600000000,
+    "marketCap": 160000000000,
+    "employees": 186000,
+    "country": "US",
+    "operatingModel": "Services",
+    "revenueGrowth": 10,
+    "headcountGrowth": -3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "T",
+    "name": "AT&T",
+    "sector": "Telecom",
+    "industry": "Telecommunications",
+    "revenue": 122400000000,
+    "marketCap": 130000000000,
+    "employees": 164000,
+    "country": "US",
+    "operatingModel": "Services",
+    "revenueGrowth": 11,
+    "headcountGrowth": -5,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Low",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "High"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "Dynamics 365",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "VZ",
+    "name": "Verizon",
+    "sector": "Telecom",
+    "industry": "Telecommunications",
+    "revenue": 133900000000,
+    "marketCap": 165000000000,
+    "employees": 103000,
+    "country": "US",
+    "operatingModel": "Services",
+    "revenueGrowth": 11,
+    "headcountGrowth": 3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Low",
+      "europeanEnergy": "Medium"
+    },
+    "techStack": {
+      "cloudProvider": "AWS",
+      "erp": "Oracle ERP",
+      "crm": "HubSpot",
+      "analytics": "Tableau"
+    }
+  },
+  {
+    "symbol": "BA",
+    "name": "Boeing",
+    "sector": "Aerospace",
+    "industry": "Aerospace & Defense",
+    "revenue": 77800000000,
+    "marketCap": 130000000000,
+    "employees": 171000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 12,
+    "headcountGrowth": 0,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "High"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "HubSpot",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "LMT",
+    "name": "Lockheed Martin",
+    "sector": "Aerospace",
+    "industry": "Aerospace & Defense",
+    "revenue": 67600000000,
+    "marketCap": 120000000000,
+    "employees": 122000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": 3,
+    "headcountGrowth": 1,
+    "supplyExposure": {
+      "chinaManufacturing": "Medium",
+      "taiwanSemiconductors": "High",
+      "redSeaShipping": "Medium",
+      "panamaCanal": "High",
+      "europeanEnergy": "Very High"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Workday",
+      "crm": "Dynamics 365",
+      "analytics": "Snowflake"
+    }
+  },
+  {
+    "symbol": "RTX",
+    "name": "RTX Corp",
+    "sector": "Aerospace",
+    "industry": "Aerospace & Defense",
+    "revenue": 68900000000,
+    "marketCap": 150000000000,
+    "employees": 185000,
+    "country": "US",
+    "operatingModel": "Asset Heavy",
+    "revenueGrowth": -3,
+    "headcountGrowth": -3,
+    "supplyExposure": {
+      "chinaManufacturing": "Low",
+      "taiwanSemiconductors": "Medium",
+      "redSeaShipping": "Very High",
+      "panamaCanal": "Medium",
+      "europeanEnergy": "High"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "HubSpot",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "PG",
+    "name": "Procter & Gamble",
+    "sector": "Consumer",
+    "industry": "Consumer Goods",
+    "revenue": 84000000000,
+    "marketCap": 385000000000,
+    "employees": 107000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 9,
+    "headcountGrowth": -1,
+    "supplyExposure": {
+      "chinaManufacturing": "Very High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Oracle Cloud",
+      "erp": "SAP",
+      "crm": "Salesforce",
+      "analytics": "Power BI"
+    }
+  },
+  {
+    "symbol": "KO",
+    "name": "Coca-Cola",
+    "sector": "Consumer",
+    "industry": "Consumer Goods",
+    "revenue": 45800000000,
+    "marketCap": 265000000000,
+    "employees": 82500,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 12,
+    "headcountGrowth": 2,
+    "supplyExposure": {
+      "chinaManufacturing": "Very High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Google Cloud",
+      "erp": "Microsoft Dynamics",
+      "crm": "Salesforce",
+      "analytics": "Databricks"
+    }
+  },
+  {
+    "symbol": "PEP",
+    "name": "PepsiCo",
+    "sector": "Consumer",
+    "industry": "Consumer Goods",
+    "revenue": 91500000000,
+    "marketCap": 220000000000,
+    "employees": 318000,
+    "country": "US",
+    "operatingModel": "Retail & Consumer",
+    "revenueGrowth": 18,
+    "headcountGrowth": 14,
+    "supplyExposure": {
+      "chinaManufacturing": "Very High",
+      "taiwanSemiconductors": "Low",
+      "redSeaShipping": "High",
+      "panamaCanal": "Very High",
+      "europeanEnergy": "Low"
+    },
+    "techStack": {
+      "cloudProvider": "Azure",
+      "erp": "Workday",
+      "crm": "Salesforce",
+      "analytics": "Snowflake"
+    }
+  }
+]
