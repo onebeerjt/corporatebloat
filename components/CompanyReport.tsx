@@ -29,6 +29,26 @@ function rankMap(companies: Company[]): Map<string, number> {
   return new Map(sorted.map((company, index) => [company.symbol, index + 1]));
 }
 
+function pillTone(value: number, type: "positive" | "risk"): string {
+  if (type === "positive") {
+    if (value >= 67) {
+      return "text-[var(--green)] border-[var(--green)]/40 bg-[rgba(0,232,122,0.1)]";
+    }
+    if (value >= 34) {
+      return "text-[var(--yellow)] border-[var(--yellow)]/40 bg-[rgba(255,215,0,0.1)]";
+    }
+    return "text-[var(--accent)] border-[var(--accent)]/40 bg-[rgba(255,60,60,0.1)]";
+  }
+
+  if (value >= 67) {
+    return "text-[var(--accent)] border-[var(--accent)]/40 bg-[rgba(255,60,60,0.1)]";
+  }
+  if (value >= 34) {
+    return "text-[var(--yellow)] border-[var(--yellow)]/40 bg-[rgba(255,215,0,0.1)]";
+  }
+  return "text-[var(--green)] border-[var(--green)]/40 bg-[rgba(0,232,122,0.1)]";
+}
+
 export default function CompanyReport({ companies, generated }: CompanyReportProps) {
   if (!generated) {
     return null;
@@ -52,26 +72,36 @@ export default function CompanyReport({ companies, generated }: CompanyReportPro
           {companies.map((company) => (
             <span
               key={company.symbol}
-              className="border border-[var(--border)] bg-[var(--bg)] px-2 py-1 font-mono text-[11px] uppercase tracking-[0.12em]"
+              className="inline-flex items-center gap-2 border border-[var(--border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] px-2 py-1 font-mono text-[11px] tracking-[0.08em]"
             >
-              {company.symbol}
+              <span className="font-display text-base leading-none tracking-[0.08em]">{company.symbol}</span>
+              <span className="text-[var(--muted)]">{company.name}</span>
             </span>
           ))}
         </div>
       </div>
 
       <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-3">
-        <article className="border border-[var(--border)] bg-[var(--bg)] p-3">
+        <article className="border border-[var(--border)] bg-[linear-gradient(140deg,rgba(0,232,122,0.12),rgba(255,255,255,0.02))] p-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">Most Efficient</p>
-          <p className="mt-1 font-display text-3xl leading-none">{highestEfficiency?.symbol ?? "N/A"}</p>
+          <p className="mt-1 font-display text-3xl leading-none">{highestEfficiency?.name ?? "N/A"}</p>
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+            {highestEfficiency?.symbol ?? ""}
+          </p>
         </article>
-        <article className="border border-[var(--border)] bg-[var(--bg)] p-3">
+        <article className="border border-[var(--border)] bg-[linear-gradient(140deg,rgba(255,215,0,0.12),rgba(255,255,255,0.02))] p-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">Largest Growth Gap</p>
-          <p className="mt-1 font-display text-3xl leading-none">{largestGap?.symbol ?? "N/A"}</p>
+          <p className="mt-1 font-display text-3xl leading-none">{largestGap?.name ?? "N/A"}</p>
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+            {largestGap?.symbol ?? ""}
+          </p>
         </article>
-        <article className="border border-[var(--border)] bg-[var(--bg)] p-3">
+        <article className="border border-[var(--border)] bg-[linear-gradient(140deg,rgba(255,60,60,0.12),rgba(255,255,255,0.02))] p-3">
           <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">Highest Supply Risk</p>
-          <p className="mt-1 font-display text-3xl leading-none">{highestSupply?.symbol ?? "N/A"}</p>
+          <p className="mt-1 font-display text-3xl leading-none">{highestSupply?.name ?? "N/A"}</p>
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+            {highestSupply?.symbol ?? ""}
+          </p>
         </article>
       </div>
 
@@ -85,9 +115,12 @@ export default function CompanyReport({ companies, generated }: CompanyReportPro
               {companies.map((company) => (
                 <th
                   key={company.symbol}
-                  className="px-3 py-2 text-left font-display text-xl tracking-[0.08em] text-[var(--text)]"
+                  className="px-3 py-2 text-left"
                 >
-                  {company.symbol}
+                  <p className="font-display text-xl tracking-[0.08em] text-[var(--text)]">{company.name}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]">
+                    {company.symbol}
+                  </p>
                 </th>
               ))}
             </tr>
@@ -137,7 +170,14 @@ export default function CompanyReport({ companies, generated }: CompanyReportPro
               <td className="px-3 py-2 text-[var(--muted)]">Supply Chain Risk</td>
               {companies.map((company) => (
                 <td key={company.symbol} className="px-3 py-2">
-                  {formatScore(company.supplyChainRiskScore)} ({company.supplyChainRiskLabel})
+                  <span
+                    className={`inline-flex items-center rounded-full border px-2 py-1 ${pillTone(
+                      company.supplyChainRiskScore ?? 0,
+                      "risk"
+                    )}`}
+                  >
+                    {formatScore(company.supplyChainRiskScore)} ({company.supplyChainRiskLabel})
+                  </span>
                 </td>
               ))}
             </tr>
@@ -157,10 +197,25 @@ export default function CompanyReport({ companies, generated }: CompanyReportPro
         {companies.map((company) => {
           const signals = prospectingSignals(company);
           return (
-            <article key={company.symbol} className="border border-[var(--border)] bg-[var(--bg)] p-3">
+            <article
+              key={company.symbol}
+              className="border border-[var(--border)] bg-[linear-gradient(165deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))] p-3"
+            >
               <div className="flex items-center justify-between">
-                <p className="font-display text-2xl tracking-[0.08em]">{company.symbol}</p>
-                <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">{company.name}</p>
+                <div>
+                  <p className="font-display text-2xl tracking-[0.08em]">{company.name}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--muted)]">
+                    {company.symbol} · {company.operatingModel ?? "N/A"}
+                  </p>
+                </div>
+                <span
+                  className={`inline-flex items-center rounded-full border px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] ${pillTone(
+                    company.efficiencyScore ?? 0,
+                    "positive"
+                  )}`}
+                >
+                  Efficiency {formatScore(company.efficiencyScore)}
+                </span>
               </div>
 
               <div className="mt-3 grid grid-cols-2 gap-2 font-mono text-xs">
