@@ -45,6 +45,8 @@ export default function BubbleChart({
 }: BubbleChartProps) {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const chartWrapRef = useRef<HTMLDivElement | null>(null);
+  const hideTooltipTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tooltipPinnedRef = useRef(false);
 
   const [dimensions, setDimensions] = useState({ width: 960, height: 620 });
   const [tooltip, setTooltip] = useState<TooltipState>({ visible: false, x: 0, y: 0, company: null });
@@ -84,6 +86,14 @@ export default function BubbleChart({
         clearTimeout(resizeTimeout);
       }
       window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (hideTooltipTimeoutRef.current) {
+        clearTimeout(hideTooltipTimeoutRef.current);
+      }
     };
   }, []);
 
@@ -157,10 +167,22 @@ export default function BubbleChart({
       .attr("class", "node")
       .attr("transform", (d) => `translate(${d.x ?? 0}, ${d.y ?? 0})`)
       .on("mousemove", (event, d) => {
+        if (hideTooltipTimeoutRef.current) {
+          clearTimeout(hideTooltipTimeoutRef.current);
+        }
         const next = positionTooltip((event as MouseEvent).clientX, (event as MouseEvent).clientY);
         setTooltip({ visible: true, x: next.x, y: next.y, company: d });
       })
-      .on("mouseleave", () => setTooltip((current) => ({ ...current, visible: false, company: null })))
+      .on("mouseleave", () => {
+        if (hideTooltipTimeoutRef.current) {
+          clearTimeout(hideTooltipTimeoutRef.current);
+        }
+        hideTooltipTimeoutRef.current = setTimeout(() => {
+          if (!tooltipPinnedRef.current) {
+            setTooltip((current) => ({ ...current, visible: false, company: null }));
+          }
+        }, 220);
+      })
       .on("click", (_, d) => onSelectCompany(d));
 
     groups
@@ -242,6 +264,16 @@ export default function BubbleChart({
         <div
           className="fixed z-[1100] min-w-[260px] border border-[var(--border)] border-l-[3px] border-l-[var(--accent)] bg-[rgba(8,8,10,0.96)] p-3"
           style={{ left: tooltip.x, top: tooltip.y }}
+          onMouseEnter={() => {
+            tooltipPinnedRef.current = true;
+            if (hideTooltipTimeoutRef.current) {
+              clearTimeout(hideTooltipTimeoutRef.current);
+            }
+          }}
+          onMouseLeave={() => {
+            tooltipPinnedRef.current = false;
+            setTooltip((current) => ({ ...current, visible: false, company: null }));
+          }}
         >
           <p className="font-display text-[26px] leading-none">{tooltip.company.symbol}</p>
           <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)]">
