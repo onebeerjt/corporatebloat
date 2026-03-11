@@ -14,7 +14,7 @@ export default function CompanyReportBuilder({
   onRemove
 }: CompanyReportBuilderProps) {
   return (
-    <section className="fixed bottom-5 left-5 z-[1050] w-[320px] border border-[var(--border)] bg-[rgba(17,17,20,0.97)] p-3 shadow-xl backdrop-blur">
+    <section className="fixed bottom-5 right-5 z-[1050] w-[340px] border border-[var(--border)] bg-[rgba(17,17,20,0.97)] p-3 shadow-xl backdrop-blur">
       <div className="flex items-center justify-between">
         <h3 className="font-display text-2xl tracking-[0.08em]">Selected Companies ({selectedCompanies.length})</h3>
       </div>
